@@ -3,7 +3,7 @@ pragma solidity ^0.8.9;
 
 import { Proxy } from "./Proxy.sol";
 import { Owned } from "@rari-capital/solmate/src/auth/Owned.sol";
-import { Lib_AddressManager } from "../legacy/Lib_AddressManager.sol";
+import { AddressManager } from "../legacy/AddressManager.sol";
 import { L1ChugSplashProxy } from "../legacy/L1ChugSplashProxy.sol";
 
 // Define static interfaces of these proxies so that we can easily
@@ -53,16 +53,16 @@ contract ProxyAdmin is Owned {
      * @custom:legacy
      * @notice A reverse mapping of addresses to names held in the AddressManager. This must be
      *         manually kept up to date with changes in the AddressManager for this contract
-     *         to be able to work as an admin for the Lib_ResolvedDelegateProxy type.
+     *         to be able to work as an admin for the ResolvedDelegateProxy type.
      */
     mapping(address => string) public implementationName;
 
     /**
      * @custom:legacy
      * @notice The address of the address manager, this is required to manage the
-     *         Lib_ResolvedDelegateProxy type.
+     *         ResolvedDelegateProxy type.
      */
-    Lib_AddressManager public addressManager;
+    AddressManager public addressManager;
 
     /**
      * @custom:legacy
@@ -98,11 +98,11 @@ contract ProxyAdmin is Owned {
 
     /**
      * @notice Set the address of the address manager. This is required to manage the legacy
-     *         `Lib_ResolvedDelegateProxy`.
+     *         `ResolvedDelegateProxy`.
      *
      * @param _address The address of the address manager.
      */
-    function setAddressManager(Lib_AddressManager _address) external onlyOwner {
+    function setAddressManager(AddressManager _address) external onlyOwner {
         addressManager = _address;
     }
 

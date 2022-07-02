@@ -3,7 +3,7 @@ pragma solidity ^0.8.9;
 
 /* Contract Imports */
 import { OptimismMintableERC20 } from "../universal/OptimismMintableERC20.sol";
-import { Lib_PredeployAddresses } from "../libraries/Lib_PredeployAddresses.sol";
+import { PredeployAddresses } from "../libraries/PredeployAddresses.sol";
 
 /**
  * @title OptimismMintableTokenFactory
@@ -28,7 +28,7 @@ contract OptimismMintableTokenFactory {
 
     /**
      * @dev Initialize the factory
-     * On L2 _bridge should be Lib_PredeployAddresses.L2_STANDARD_BRIDGE,
+     * On L2 _bridge should be PredeployAddresses.L2_STANDARD_BRIDGE,
      * On L1 _bridge should be the L1StandardBridge
      */
     function initialize(address _bridge) public {

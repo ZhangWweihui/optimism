@@ -4,8 +4,8 @@ pragma solidity ^0.8.9;
 // solhint-disable max-line-length
 
 /* Library Imports */
-import { Lib_DefaultValues } from "../libraries/Lib_DefaultValues.sol";
-import { CrossDomainHashing } from "../libraries/Lib_CrossDomainHashing.sol";
+import { DefaultValues } from "../libraries/DefaultValues.sol";
+import { CrossDomainHashing } from "../libraries/CrossDomainHashing.sol";
 
 /* External Imports */
 import {
@@ -112,7 +112,7 @@ abstract contract CrossDomainMessenger is
      */
     function xDomainMessageSender() external view returns (address) {
         require(
-            xDomainMsgSender != Lib_DefaultValues.DEFAULT_XDOMAIN_SENDER,
+            xDomainMsgSender != DefaultValues.DEFAULT_XDOMAIN_SENDER,
             "xDomainMessageSender is not set"
         );
 
@@ -229,7 +229,7 @@ abstract contract CrossDomainMessenger is
             0,
             _message
         );
-        xDomainMsgSender = Lib_DefaultValues.DEFAULT_XDOMAIN_SENDER;
+        xDomainMsgSender = DefaultValues.DEFAULT_XDOMAIN_SENDER;
 
         if (success == true) {
             successfulMessages[versionedHash] = true;
@@ -260,7 +260,7 @@ abstract contract CrossDomainMessenger is
     function _initialize(address _otherMessenger, address[] memory _blockedSystemAddresses)
         internal
     {
-        xDomainMsgSender = Lib_DefaultValues.DEFAULT_XDOMAIN_SENDER;
+        xDomainMsgSender = DefaultValues.DEFAULT_XDOMAIN_SENDER;
         otherMessenger = _otherMessenger;
 
         for (uint256 i = 0; i < _blockedSystemAddresses.length; i++) {
